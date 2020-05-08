@@ -91,6 +91,7 @@ class Login extends Component {
             message: '请输入正确的email!',
             pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,})+$/
           };
+    const userPlaceholder = this.state.loginType === 'ldap' ? 'Username' : 'Email';
     return (
       <Form onSubmit={this.handleSubmit}>
         {/* 登录类型 (普通登录／LDAP登录) */}
@@ -98,7 +99,7 @@ class Login extends Component {
           <FormItem>
             <RadioGroup defaultValue="ldap" onChange={this.handleFormLayoutChange}>
               <Radio value="ldap">LDAP</Radio>
-              <Radio value="normal">普通登录</Radio>
+              {/*<Radio value="normal">普通登录</Radio>*/}
             </RadioGroup>
           </FormItem>
         )}
@@ -108,7 +109,7 @@ class Login extends Component {
             <Input
               style={changeHeight}
               prefix={<Icon type="user" style={{ fontSize: 13 }} />}
-              placeholder="Email"
+              placeholder={placeholder}
             />
           )}
         </FormItem>
